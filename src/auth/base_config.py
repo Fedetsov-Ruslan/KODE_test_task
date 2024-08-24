@@ -1,10 +1,10 @@
 from fastapi_users import FastAPIUsers
 from fastapi_users.authentication import AuthenticationBackend, CookieTransport, JWTStrategy
 
-from notes_app.auth.manager import get_user_manager
+from src.auth.manager import get_user_manager
 
-from notes_app.config import SECRET_AUTH
-from notes_app.database import User
+from src.config import SECRET_AUTH
+from src.database import User
 
 cookie_transport = CookieTransport(cookie_name="bounds", cookie_max_age=3600)
 

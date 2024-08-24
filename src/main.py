@@ -1,10 +1,11 @@
 from fastapi import FastAPI, Depends
 from fastapi_users import FastAPIUsers
 
-from notes_app.auth.auth import auth_backend
-from notes_app.auth.schemas import UserRead, UserCreate
-from notes_app.database import User
-from notes_app.auth.manager import get_user_manager
+from src.auth.auth import auth_backend
+from src.auth.schemas import UserRead, UserCreate
+from src.auth.models import User
+from src.auth.manager import get_user_manager
+from src.notes.router import router as router_notes
 
 
 app = FastAPI(
@@ -26,20 +27,6 @@ def protected_route(current_user: User = Depends(current_user)):
 def unprotected_route():
     return f'hello, anonymous'
 
-@app.get("/notes/{user_id}")
-def get_records(user_id: int):
-    # query = select(Note).where(Note.user_id == user_id)
-
-    return
-
-
-
-@app.get("/")
-def main_page():
-    return {"Hello": "World"}
-
-
-
 app.include_router(
     fastapi_users.get_auth_router(auth_backend),
     prefix="/auth/jwt",
@@ -50,4 +37,8 @@ app.include_router(
     fastapi_users.get_register_router(UserRead, UserCreate),
     prefix="/auth",
     tags=["auth"],
+)
+
+app.include_router(
+   router_notes,
 )

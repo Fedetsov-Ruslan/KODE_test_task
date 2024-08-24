@@ -3,8 +3,9 @@ from typing import Optional
 from fastapi import Depends, Request
 from fastapi_users import BaseUserManager, IntegerIDMixin, UUIDIDMixin
 
-from notes_app.database import User, get_user_db
-from notes_app.config import SECRET_AUTH
+from src.auth.utils import  get_user_db
+from src.auth.models import User
+from src.config import SECRET_AUTH
 
 
 

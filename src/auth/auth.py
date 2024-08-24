@@ -1,5 +1,5 @@
 from fastapi_users.authentication import CookieTransport, JWTStrategy, AuthenticationBackend
-from notes_app.config import SECRET_AUTH
+from src.config import SECRET_AUTH
 
 cookie_transport = CookieTransport(cookie_name="bounds", cookie_max_age=3600)
 

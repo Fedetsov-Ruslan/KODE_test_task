@@ -4,10 +4,16 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
-from notes_app.config import DB_HOST, DB_NAME, DB_PASS, DB_PORT, DB_USER
-from notes_app.auth.models import *
-from notes_app.notes.models import *
-from notes_app.database import metadata
+
+import os
+import sys
+
+sys.path.append(os.path.join(sys.path[0], 'src'))
+
+from src.config import DB_HOST, DB_NAME, DB_PASS, DB_PORT, DB_USER
+from src.auth.models import *
+from src.notes.models import *
+from src.database import metadata
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
