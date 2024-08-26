@@ -17,16 +17,6 @@ fastapi_users = FastAPIUsers[User, int](
     [auth_backend]
 )
 
-current_user = fastapi_users.current_user()
-
-@app.get("/protected-route")
-def protected_route(current_user: User = Depends(current_user)):
-    return f'hello, {current_user.username}'
-
-@app.get("/unprotected-route")
-def unprotected_route():
-    return f'hello, anonymous'
-
 app.include_router(
     fastapi_users.get_auth_router(auth_backend),
     prefix="/auth/jwt",

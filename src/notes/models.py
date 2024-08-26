@@ -16,11 +16,3 @@ record = Table(
     Column('content', String, nullable=False),
     Column('created_at', TIMESTAMP, default=datetime.datetime.utcnow),
 )
-
-# class Record(Base):
-#     __tablename__ = "record"
-
-#     id = Column(Integer, primary_key=True)
-#     auther = Column(ForeignKey("users.id"), nullable=False)
-#     content = Column(String(255), nullable=False)
-#     created_at = Column(TIMESTAMP, default=datetime.datetime.utcnow)
